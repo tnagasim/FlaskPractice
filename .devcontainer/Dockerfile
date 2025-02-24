@@ -1,4 +1,10 @@
 FROM mcr.microsoft.com/devcontainers/python:1-3.13-bullseye
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install -y tzdata && \
+    ln -fs /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+RUN pip3 install --upgrade pip
 RUN apt-get update \
     && apt-get install -y wget \
     bash \
