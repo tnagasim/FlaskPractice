@@ -18,6 +18,7 @@
 			},
 			"extensions": [
 				"csholmq.excel-to-markdown-table",
+				"cstrap.flask-snippets",
 				"davidanson.vscode-markdownlint",
 				"eamodio.gitlens",
 				"george-alisson.html-preview-vscode",
@@ -32,8 +33,10 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"ms-toolsai.jupyter",
+				"samuelcolvin.jin",
 				"streetsidesoftware.code-spell-checker",
 				"takumii.markdowntabl",
+				"waseemakram.jinja-snippets-flask",
 				"yzhang.markdown-all-in-one"
 			]
 		}

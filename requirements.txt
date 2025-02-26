@@ -18,3 +18,4 @@ plotly
 pytest
 python-dotenv
 scikit-learn
+types-Flask-Migrate
