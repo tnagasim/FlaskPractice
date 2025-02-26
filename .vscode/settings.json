@@ -12,6 +12,7 @@
         "gfortran",
         "ipython",
         "isort",
+        "jinjahtml",
         "libamd",
         "libcholmod",
         "liblapack",
