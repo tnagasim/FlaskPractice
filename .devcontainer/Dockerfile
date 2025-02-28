@@ -19,6 +19,7 @@ RUN apt-get update \
     libmetis-dev \
     libsuitesparse-dev \
     libnauty2-dev \
+    sqlite3 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --upgrade setuptools wheel pip
