@@ -5,7 +5,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 
 from apps.config import config
-from apps.auth import views as auth_views
 
 
 db = SQLAlchemy()
@@ -20,7 +19,8 @@ def create_app(config_key):
     app.config.from_object(config[config_key])
     db.init_app(app)
     Migrate(app, db)
-    # login_manager.init_app(app)
+    login_manager.init_app(app)
+    from apps.auth import views as auth_views
     app.register_blueprint(auth_views.auth, url_prefix="/auth")
     from apps.crud import views as crud_views
     app.register_blueprint(crud_views.crud, url_prefix="/crud")
