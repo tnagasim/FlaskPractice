@@ -5,24 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python デバッガー: Flask",
+            "name": "Flask",
             "type": "debugpy",
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "app.py",
                 "FLASK_DEBUG": "1"
             },
             "args": [
                 "run",
-                "-h",
-                "0.0.0.0",
-                "-p",
-                "8080"
+                "--debugger",
+                "--reload"
             ],
             "justMyCode": false,
             "jinja": true,
-            "autoStartBrowser": false
+            "autoStartBrowser": true
         }
     ]
 }
