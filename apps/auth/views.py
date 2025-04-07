@@ -38,7 +38,7 @@ def signup():
         login_user(user)
         next_ = request.args.get("next")
         if next_ is None or not next_.startswith("/"):
-            next_ = url_for("crud.users")
+            next_ = url_for("detector.index")
         return redirect(next_)
     return render_template("auth/signup.html", form=form)
 
@@ -50,7 +50,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            return redirect(url_for("crud.users"))
+            return redirect(url_for("detector.index"))
         flash("メールアドレスかパスワードが不正です")
     return render_template("auth/login.html", form=form)
 
