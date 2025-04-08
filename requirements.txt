@@ -13,11 +13,14 @@ isort
 jupyter
 matplotlib
 mypy
+opencv-python
 pandas
 plotly
 pytest
 python-dotenv
 scikit-learn
 sqlalchemy-stubs
+torch
+torchvision
 types-Flask-Migrate
 types-wtforms
