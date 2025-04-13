@@ -21,7 +21,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from apps.app import db
 from apps.crud.models import User
-from apps.detector.forms import UploadImageForm
+from apps.detector.forms import UploadImageForm, DetectorForm
 from apps.detector.models import UserImage, UserImageTag
 
 
@@ -36,7 +36,21 @@ def index():
         .filter(User.id == UserImage.user_id)
         .all()
     )
-    return render_template("detector/index.html", user_images=user_images)
+    user_image_tag_dict = {}
+    for user_image in user_images:
+        user_image_tags = (
+            db.session.query(UserImageTag).filter(
+                UserImageTag.user_image_id == user_image.UserImage.id
+            ).all()
+        )
+        user_image_tag_dict[user_image.UserImage.id] = user_image_tags
+    detector_form = DetectorForm()
+    return render_template(
+        "detector/index.html",
+        user_images=user_images,
+        user_image_tag_dict=user_image_tag_dict,
+        detector_form=detector_form,
+    )
 
 
 @dt.route("/images/<path:filename>")
@@ -145,8 +159,8 @@ def exec_detect(target_image_path):
             line = make_line(result_image)
             c1 = (int(box[0]), int(box[1]))
             c2 = (int(box[2]), int(box[3]))
-            cv2 = draw_lines(c1, c2, result_image, line, color)
-            cv2 = draw_texts(result_image, line, c1, cv2, color, labels, label)
+            cv2_ = draw_lines(c1, c2, result_image, line, color)
+            draw_texts(result_image, line, c1, cv2_, color, labels, label)
             tags.append(labels[label])
 
     detected_image_file_name = str(uuid.uuid4()) + ".jpg"
