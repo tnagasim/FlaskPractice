@@ -163,6 +163,16 @@ def search():
     )
 
 
+@dt.errorhandler(404)
+def page_not_found(e):
+    return render_template("detector/404.html"), 404
+
+
+@dt.errorhandler(500)
+def internal_server_error(e):
+    return render_template("detector/500.html"), 500
+
+
 def make_color(labels):
     colors = [[random.randint(0, 225) for _ in range(3)] for _ in labels]
     color = random.choice(colors)
