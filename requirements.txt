@@ -17,6 +17,7 @@ opencv-python
 pandas
 plotly
 pytest
+pytest-cov
 python-dotenv
 scikit-learn
 sqlalchemy-stubs
