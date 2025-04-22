@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - '-t'
+      - 'asia-northeast1-docker.pkg.dev/flaskbook-api-457010/detector-app/detector-app:latest'
+      - '-f'
+      - '.devcontainer/Dockerfile'
+      - '.'
+images:
+  - 'asia-northeast1-docker.pkg.dev/flaskbook-api-457010/detector-app/detector-app:latest'
